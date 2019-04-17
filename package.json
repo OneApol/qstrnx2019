@@ -23,7 +23,7 @@
   "homepage": "https://github.com/OneApol/qstrnx2019#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "mysql": "^2.16.0"
+    "mysql2": "^1.6.5"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"
