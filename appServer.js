@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
 //Middlewares
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'app', 'public')));
 
 //for routes 
@@ -24,7 +24,7 @@ app.use(adminRoutes);
 app.use(userRoutes);
 
 //test connection
-// db.execute('SELECT * FROM Item')
+// db.execute('SELECT * FROM Item WHERE item_id = ?', [1])
 // .then(res => {
 // 	console.log(res);
 // })

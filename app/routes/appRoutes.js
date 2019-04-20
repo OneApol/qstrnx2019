@@ -8,12 +8,12 @@ const items = require('../controllers/items');
 //without ID
 router.route('/items')
 	.get(items.getItems)
-	.post(items.createItem)
+	.post(items.createItem);
 
-//with ID
-router.route('item/:itemId')
+// with ID
+router.route('/item/:itemId')
 	.get(items.getItem)
 	.put(items.updateItem)
-	.delete(items.deleteItem)
+	.delete(items.deleteItem);
 
 module.exports = router;

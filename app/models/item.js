@@ -6,19 +6,28 @@ module.exports = class Item {
 		this.name = item.name;
 		this.qty = item.qty;
 		this.amount = item.amount;
-	}
+	};
 	
-	static getItems(result) {
-		sql.query("SELECT * FROM Item", (err, res) => {
-			if(err){
-				console.log("Error: ", err);
-				result(null, err);
-			}
+	static getItems() {
+		return sql.execute("SELECT * FROM Item");
+	};
 
-			else {
-				console.log("Items: ", res);
-				result(null, res);
-			}
-		});
+	static getItem(itemId){
+		return sql.execute("SELECT * FROM Item WHERE item_id = ?", [itemId]);
+	};
+
+	createItem(result){
+		return sql.execute(
+			"INSERT INTO Item (item_name, item_qty, item_amount) VALUES (?, ?, ?)", 
+			[this.name, this.qty, this.amount]		
+		);
+	}
+
+	updateItem(){
+		
+	}
+
+	deleteItem(){
+
 	}
 }
