@@ -23,11 +23,14 @@ module.exports = class Item {
 		);
 	}
 
-	updateItem(){
-		
+	updateItem(itemId){
+		return sql.execute(
+			"UPDATE Item SET item_name = ?, item_qty = ?, item_amount = ? WHERE item_id = ?", 
+			[this.name, this.qty, this.amount, itemId]	
+		);
 	}
 
-	deleteItem(){
-
+	static deleteItem(itemId){
+		return sql.execute("DELETE FROM Item WHERE item_id = ? ", [itemId]);
 	}
 }
