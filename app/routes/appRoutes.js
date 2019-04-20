@@ -1,18 +1,19 @@
 //Insert routes here
+const express = require('express');
 
-"use strict";
-module.exports = app => {
-	const items = require('../controllers/itemsController');
+const router = express.Router();
 
-	//without ID
-	app.route('/items')
-		.get(items.getItems)
-		.post(items.createItem)
+const items = require('../controllers/items');
 
-	//with ID
-	app.route('item/:itemId')
-		.get(items.getItem)
-		.put(items.updateItem)
-		.delete(items.deleteItem)
+//without ID
+router.route('/items')
+	.get(items.getItems)
+	.post(items.createItem)
 
-}
+//with ID
+router.route('item/:itemId')
+	.get(items.getItem)
+	.put(items.updateItem)
+	.delete(items.deleteItem)
+
+module.exports = router;
