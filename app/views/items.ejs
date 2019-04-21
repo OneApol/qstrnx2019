@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= pageTitle %></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#">BLACKPINK in your area</a></h1>
+				<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
+				<span>& Powered by Node.js</a></span>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="/" accesskey="1" title="">Homepage</a></li>
+					<li class="current_page_item"><a href="/items" accesskey="2" title="">Items</a></li>
+					<li><a href="/item/Add" accesskey="3" title="">Add Item</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper2">
+		<div id="welcome" class="container">
+			<div class="title">
+				<h2>This is the View All Items Page!</h2>
+			</div>
+			<p>This is <strong>BLACKPINK in your area</strong>, my first app written in Node.js with Express. The project can be found in github <a href='https://github.com/OneApol/qstrnx2019'>here!</a> Thank you and have a good day!</p>
+		</div>
+	</div>
+	<div id="wrapper3">
+	<div id="three-column" class="container">
+		<center><h2 class='title'>Item List</h2></center>
+		<% if (hasItems) { %>
+
+			<table class='table'>
+				<tr>
+					<th>Item ID</th>
+					<th>Item Name</th>
+					<th>Quantity</th>
+					<th>Amount</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+
+				<% for (let item of items) { %>
+
+					<tr>
+						<td><%= item.item_id %></td>
+						<td><a href='/item/<%= item.item_id %>' /><%= item.item_name %></td>
+						<td><%= item.item_qty %></td>
+						<td><%= item.item_amount %></td>
+						<td><a href='/item/update/<%= item.item_id %>'> <button type='submit' class='button-small'> EDIT ITEM </button></a></td>
+						<form action='/item/<%= item.item_id %>?_method=DELETE' method='POST'>
+							<td>
+								<button type="submit" class='button-small del-item'>DELETE ITEM</button>
+							</td>
+						</form>
+					</tr>
+
+				<% } %>
+
+			</table>
+		<% } else { %>
+
+			<h1> No items yet </h1>
+
+		<% } %> 
+	</div>
+	</div>
+	<div id="wrapper4">
+		<div id="footer" class="container">
+			<div>
+				<header class="title">
+					<h2>Get in touch</h2>
+					<span class="byline">Subscribe to Pewdiepie</span> </header>
+				<ul class="contact">
+					<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
+					<li><a href="#" class="icon icon-facebook"><span></span></a></li>
+					<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+					<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+					<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="copyright" class="container">
+		<p>&copy; BLACKPINK. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= pageTitle %></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#">BLACKPINK in your area</a></h1>
+				<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
+				<span>& Powered by Node.js</a></span>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="/" accesskey="1" title="">Homepage</a></li>
+					<li><a href="/items" accesskey="2" title="">Items</a></li>
+					<li><a href="/item/Add" accesskey="3" title="">Add Item</a></li>
+					<li class='current-page-item'><a href="#" accesskey="3" title="">Update Item</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper2">
+		<div id="welcome" class="container">
+			<div class="title">
+				<h2>You are in the Update Item Page!</h2>
+			</div>
+			<p>This is <strong>BLACKPINK in your area</strong>, my first app written in Node.js with Express. The project can be found in github <a href='https://github.com/OneApol/qstrnx2019'>here!</a> Thank you and have a good day!</p>
+		</div>
+	</div>
+	<div id="wrapper3">
+	<div id="three-column" class="container">
+		<% if(existing) { %>
+		<form action='/item/<%= item.item_id %>?_method=PUT' method='POST'> 
+		<div><span class="arrow-down"></span></div>
+		<div id="tbox1"> <span class="icon icon-wrench"></span>
+			<div class="title">
+				<h2>Item Name</h2>
+			</div>
+			<input type='text' name='name' class='text' value='<%= item.item_name %>' required/>
+		</div>
+		<div id="tbox2"> <span class="icon icon-cogs"></span>
+			<div class="title">
+				<h2>Item Quantity</h2>
+			</div>
+			<input type='number' name='qty' class='text' value='<%= item.item_qty %>' required/>
+			<button type='submit' class="button">Update Item</button></div>
+		<div id="tbox3"> <span class="icon icon-legal"></span>
+			<div class="title">
+				<h2>Item Amount</h2>
+			</div>
+		<input type='number' step='any' name='amount' class='text' value='<%= item.item_amount %>' required/>
+		</div>
+		</form>
+		<% } else { %>
+		<br /><h1>Item does not exist.</h1>
+		<% } %>
+	</div>
+	</div>
+	<div id="wrapper4">
+		<div id="footer" class="container">
+			<div>
+				<header class="title">
+					<h2>Get in touch</h2>
+					<span class="byline">Subscribe to Pewdiepie</span> </header>
+				<ul class="contact">
+					<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
+					<li><a href="#" class="icon icon-facebook"><span></span></a></li>
+					<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+					<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+					<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="copyright" class="container">
+		<p>&copy; BLACKPINK. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+	</div>
+</body>
+</html>
