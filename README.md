@@ -1,6 +1,6 @@
 # qstrnx2019
 Practical Exam
-In compliance to the requirements set by Questronix Recruitment, this was written using:
+In compliance to the requirements set by Questronix Recruitment, this was written in:
 Node.js using the libraries:
 1. Express
 2. EJS
