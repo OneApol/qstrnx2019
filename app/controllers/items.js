@@ -4,7 +4,12 @@ const itemModel = require('../models/item');
 exports.getItems = (req, res, next) => {
 	itemModel.getItems()
 	.then(([rows, fieldData]) => {
-		res.send(rows);
+		res.render('items', {
+			items: rows,
+			pageTitle: 'Items',
+			path: '/items',
+			hasItems: rows.length > 0
+		});
 	})
 	.catch(err => { 
 		console.log(err); 
@@ -14,14 +19,19 @@ exports.getItems = (req, res, next) => {
 exports.getItem = (req, res, next) => {
 	itemModel.getItem(req.params.itemId)
 	.then(([rows, fieldData]) => {
-		res.send(rows);
+		res.render('item', {
+			item: rows[0],
+			pageTitle: 'Item',
+			path: '/item/:itemId',
+			existing: rows.length > 0			
+		});
 	})
 	.catch(err => {
 		console.log(err);
-	})
+	});
 };
 
-exports.createItem = (req, res, next) => {
+exports.addItem = (req, res, next) => {
 	const newItem = new itemModel(req.body);
 	if(!newItem.name || !newItem.qty || !newItem.amount){
 
@@ -30,10 +40,11 @@ exports.createItem = (req, res, next) => {
     }
 
     else {
-    	newItem.createItem()
+    	newItem.addItem()
     	.then(([ result ]) => {
-
-    		res.status(200).send({message: `Insert Success with id: ${result.insertId}`});
+    		
+    		res.redirect('/items');
+    		// res.status(200).send({message: `Insert Success with id: ${result.insertId}`});
 
     	})
     	.catch(err => {
@@ -54,7 +65,7 @@ exports.updateItem = (req, res, next) => {
     	updatedItem.updateItem(req.params.itemId)
     	.then(([ result ]) => {
 
-    		res.status(200).send({message: `Update Success with id: ${req.params.itemId}`});
+    		res.status(200).redirect(`/item/${req.params.itemId}`);
 
     	})
     	.catch(err => {
@@ -66,7 +77,9 @@ exports.updateItem = (req, res, next) => {
 exports.deleteItem = (req, res, next) => {
 	itemModel.deleteItem(req.params.itemId)
 	.then(result => {
-		res.status(200).send({message: "Deleted Successfully"});
+
+		res.status(200).redirect('/items');
+
 	})
 	.catch(err => {
 		console.log(err);

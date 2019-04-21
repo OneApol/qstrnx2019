@@ -16,7 +16,7 @@ module.exports = class Item {
 		return sql.execute("SELECT * FROM Item WHERE item_id = ?", [itemId]);
 	};
 
-	createItem(result){
+	addItem(result){
 		return sql.execute(
 			"INSERT INTO Item (item_name, item_qty, item_amount) VALUES (?, ?, ?)", 
 			[this.name, this.qty, this.amount]		

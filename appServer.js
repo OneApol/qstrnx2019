@@ -3,6 +3,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const db = require('./app/database/database');
 const adminRoutes = require('./app/routes/appRoutes');
@@ -16,21 +17,13 @@ app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
 //Middlewares
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'app', 'public')));
 
 //for routes 
 app.use(adminRoutes);	
 app.use(userRoutes);
-
-//test connection
-// db.execute('SELECT * FROM Item WHERE item_id = ?', [1])
-// .then(res => {
-// 	console.log(res);
-// })
-// .catch(err => {
-// 	console.log(err);
-// });
 
 app.listen(port);
 
