@@ -12,4 +12,5 @@ Node.js using the libraries:
 Installation Instructions:
 1. Download/Clone the project
 2. Download dependencies using command `npm install`
-3. Run project using command `npm run start` or simply `npm start`
+3. Run the DB Scripts located in the `DB-queries` folder
+4. Run project using command `npm run start` or simply `npm start`
